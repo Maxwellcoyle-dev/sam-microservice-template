@@ -1,0 +1,37 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  {{cookiecutter.ProjectName}} - Microservice for handling {{cookiecutter.ProjectName}} logic
+
+Globals:
+  Function:
+    Timeout: 10
+    Runtime: nodejs18.x
+    MemorySize: 128
+    Architectures:
+      - x86_64
+    Environment:
+      Variables:
+        RESOURCE_PREFIX: { { cookiecutter.ResourcePrefix } }
+
+Resources:
+  MyFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub "{{cookiecutter.ResourcePrefix}}-handler"
+      Handler: functions/app.handler
+      CodeUri: src/
+      Events:
+        ApiRequest:
+          Type: Api
+          Properties:
+            Path: /{{cookiecutter.ProjectName}}
+            Method: post
+
+  MyTable:
+    Type: AWS::Serverless::SimpleTable
+    Properties:
+      TableName: !Sub "{{cookiecutter.ResourcePrefix}}-data"
+      PrimaryKey:
+        Name: id
+        Type: String

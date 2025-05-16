@@ -1,0 +1,25 @@
+version = 0.1
+
+[default]
+[default.deploy]
+parameters = {
+  stack_name = "{{cookiecutter.ProjectName}}-dev",
+  s3_bucket = "sam-deployments-your-org",         # optional if using your own shared bucket
+  s3_prefix = "{{cookiecutter.ProjectName}}",
+  region = "us-east-1",
+  confirm_changeset = false,
+  capabilities = "CAPABILITY_IAM",
+  parameter_overrides = "Stage=dev ResourcePrefix={{cookiecutter.ResourcePrefix}}"
+}
+
+[dev.deploy.parameters]
+stack_name = "{{cookiecutter.ProjectName}}-dev"
+parameter_overrides = "Stage=dev ResourcePrefix={{cookiecutter.ResourcePrefix}}"
+
+[staging.deploy.parameters]
+stack_name = "{{cookiecutter.ProjectName}}-staging"
+parameter_overrides = "Stage=staging ResourcePrefix={{cookiecutter.ResourcePrefix}}"
+
+[prod.deploy.parameters]
+stack_name = "{{cookiecutter.ProjectName}}-prod"
+parameter_overrides = "Stage=prod ResourcePrefix={{cookiecutter.ResourcePrefix}}"

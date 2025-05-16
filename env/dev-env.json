@@ -1,0 +1,7 @@
+{
+  "HandleNewCustomerSignup": {
+    "CUSTOMERS_TABLE_NAME": "seedbomb-customers-dev",
+    "EVENT_BUS_NAME": "seedbomb-signup-bus",
+    "STAGE": "dev"
+  }
+}

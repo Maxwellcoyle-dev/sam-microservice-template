@@ -1,0 +1,16 @@
+{
+  "Metadata": {
+    "TemplateName": "SAM Microservice Starter",
+    "Description": "Starter template for AWS Lambda microservices using API Gateway and DynamoDB",
+    "Parameters": {
+      "ProjectName": {
+        "Type": "string",
+        "Description": "Project or microservice name (e.g., lead-capture, user-auth)"
+      },
+      "ResourcePrefix": {
+        "Type": "string",
+        "Description": "Prefix for naming AWS resources (e.g., lc-dev, auth-prod)"
+      }
+    }
+  }
+}
